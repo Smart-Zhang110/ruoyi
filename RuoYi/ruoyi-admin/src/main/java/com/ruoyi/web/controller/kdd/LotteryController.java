@@ -18,7 +18,7 @@ public class LotteryController {
 
     @RequiresPermissions("kdd:lottery:view")
     @GetMapping()
-    public String Lottery() {
+    public String lottery() {
         return prefix + "/lottery";
     }
 
