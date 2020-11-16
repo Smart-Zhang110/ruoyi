@@ -1,7 +1,11 @@
 package com.ruoyi.kdd.util;
 
+import com.ruoyi.kdd.entity.PrivateInfo;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.crypto.Cipher;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -11,25 +15,28 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
 public class RsaDemo {
-
-    public static void main(String[] args) {
+    protected static Logger logger = LoggerFactory.getLogger(RsaDemo.class);
+    public static void main(String[] args) throws Exception {
         String algorithm = "RSA";
-        String input = "3dqeqdaweq";
-        try {
-            generateKeyToFile(algorithm, "a.pub", "a.pri");
-
+        String input = "17413149213199931351";
+//        try {
+//            generateKeyToFile(algorithm, "a.pub", "a.pri");
+//
             PublicKey publicKey = loadPublicKeyFromFile(algorithm, "a.pub");
             PrivateKey privateKey = loadPrivateKeyFromFile(algorithm, "a.pri");
 
+//        logger.info(decrypt(algorithm, PrivateInfo.yes, privateKey, 800));
+//
             String encrypt = encrypt(algorithm, input, privateKey, 20);
-            System.out.println(encrypt);
-            String decrypt = decrypt(algorithm, encrypt, publicKey, 300);
-
-            System.out.println(decrypt);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            logger.info(encrypt);
+            logger.info(decrypt(algorithm, PrivateInfo.yes, publicKey, 300));
+//            String decrypt = decrypt(algorithm, encrypt, publicKey, 300);
+//
+//            logger.info(decrypt);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -169,7 +176,7 @@ public class RsaDemo {
      * @return : 原文
      * @throws Exception
      */
-    private static String decrypt(String algorithm, String encrypted, Key key, int maxDecryptSize) throws Exception {
+    public static String decrypt(String algorithm, String encrypted, Key key, int maxDecryptSize) throws Exception {
         // 获取Cipher对象
         Cipher cipher = Cipher.getInstance(algorithm);
         // 初始化模式(解密)和密钥

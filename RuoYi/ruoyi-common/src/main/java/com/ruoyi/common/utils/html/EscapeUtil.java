@@ -148,8 +148,8 @@ public class EscapeUtil
         // String html = "<scr<script>ipt>alert(\"XSS\")</scr<script>ipt>";
         // String html = "<123";
         // String html = "123>";
-        System.out.println(EscapeUtil.clean(html));
-        System.out.println(EscapeUtil.escape(html));
-        System.out.println(EscapeUtil.unescape(html));
+//        logger.info(EscapeUtil.clean(html));
+//        logger.info(EscapeUtil.escape(html));
+//        logger.info(EscapeUtil.unescape(html));
     }
 }

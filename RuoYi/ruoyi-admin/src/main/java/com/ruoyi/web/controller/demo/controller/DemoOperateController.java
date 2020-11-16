@@ -161,7 +161,7 @@ public class DemoOperateController extends BaseController
     @ResponseBody
     public AjaxResult addSave(CustomerModel customerModel)
     {
-        System.out.println(customerModel.toString());
+        logger.info(customerModel.toString());
         return AjaxResult.success();
     }
 

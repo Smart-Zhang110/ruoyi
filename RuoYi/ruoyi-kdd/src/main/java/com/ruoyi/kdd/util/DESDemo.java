@@ -1,5 +1,8 @@
 package com.ruoyi.kdd.util;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
@@ -11,7 +14,7 @@ import java.security.spec.KeySpec;
 public class DESDemo {
 
     public static final String algorithm = "DES";
-
+    protected static Logger logger = LoggerFactory.getLogger(DESDemo.class);
     // 这是默认模式
     // public static final String transformation = "DES/ECB/PKCS5Padding";
     // 使用CBC模式, 在初始化Cipher对象时, 需要增加参数, 初始化向量IV : IvParameterSpec iv = new IvParameterSpec(key.getBytes());
@@ -27,9 +30,9 @@ public class DESDemo {
 
         String encryptByDES = encryptByDES("qqqqqqqq");
 
-//        System.out.println(encryptByDES);
+//        logger.info(encryptByDES);
         String decryptByDES = decryptByDES(encryptByDES);
-        System.out.println(decryptByDES);
+        logger.info(decryptByDES);
     }
 
     public static String encryptByDES(String key) throws Exception {
