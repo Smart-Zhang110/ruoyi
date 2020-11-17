@@ -38,7 +38,7 @@ public class TMOrderController {
     @ResponseBody
     public Map OrderTM(HttpServletRequest request) throws Exception {
         Map paramters = new HashMap();
-        paramters.put("date","2020-11-16 20:59:59:9");
+        paramters.put("date","2020-11-16 19:59:59:9");
         chromDriverService.order(paramters);
         return null;
     }
